@@ -1,13 +1,21 @@
-// import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-/// usisng bloc
-class AccountCubit extends Bloc<AccountCubit, int>{
-  AccountCubit():super(10);
+import "accountEvent.dart";
 
-  void aIncrement()=>emit(state + 10);
-  void aDecrement()=>emit(state - 10);
+// using bloc
+class AccountCubit extends Bloc<AccountCubitEvent, int> {
+  AccountCubit() : super(10) {
+    on((event, emit) {
+      if (event is AccountIncrementEvent) {
+        return emit(state + 10);
+      }
+      if (event is AccountDecrementEvent) {
+        return emit(state - 10);
+      }
+    });
+  }
 }
-/// using cubit
+
+// using cubit
 // class CounterCubit extends Cubit<int> {
 //   CounterCubit() : super(0);
 //
