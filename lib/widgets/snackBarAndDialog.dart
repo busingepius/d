@@ -1,10 +1,22 @@
+import "package:d/bloc/data/data.dart";
+import "package:d/bloc/data/event.dart";
 import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
 
 ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showCustomSnackBar({
   required BuildContext context,
-  required int state,
+  required String message,
 }) {
-  const snackBar = SnackBar(content: Text('Yay! A SnackBar!'));
+  var snackBar = SnackBar(
+    duration:  const Duration(days: 7),
+    content: Text(message),
+    action: SnackBarAction(
+      label: "Try Again",
+      textColor: Colors.blueAccent,
+      onPressed: () =>
+          BlocProvider.of<DataBloc>(context).add(const SplashEvent()),
+    ),
+  );
   return ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }
 

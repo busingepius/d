@@ -29,14 +29,6 @@ class Second extends StatelessWidget {
                     // showCustomBottomSheet(context);
                   },
                 ),
-                BlocListener<CounterCubit, int>(
-                  listener: (BuildContext context, int state) {
-                    showCustomSnackBar(
-                      context: context,
-                      state: context.read<CounterCubit>().state,
-                    );
-                  },
-                ),
               ],
               child: const Text("just listening"),
             ),

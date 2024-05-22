@@ -1,5 +1,7 @@
 import 'package:d/bloc/data/data.dart';
 import 'package:d/bloc/data/event.dart';
+import 'package:d/widgets/snackBarAndDialog.dart';
+import 'package:d/widgets/snackBarAndDialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -30,23 +32,19 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             BlocListener<DataBloc, Map>(
-              // listenWhen: (previous, current) {
-              //   return previous==current;
-              // },
               listener: (BuildContext context, state) {
-                print(state);
-                context.go("/home");
+                if (state.keys.first == "message") {
+                  showCustomSnackBar(context:context,message:state["message"]);
+                } else {
+                  context.go("/home");
+                }
               },
-            child: const Spacer(),
+              child: const Spacer(),
             ),
             Image.asset(
               "images/logos/logo.png",
               height: 200.0,
               width: 200.0,
-            ),
-            // const Spacer(),
-            const CircularProgressIndicator(
-              color: Colors.black12,
             ),
             const Spacer(),
             const Text("Powered by Gegabox"),

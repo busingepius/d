@@ -20,6 +20,7 @@ class _HomeState extends State<Home> {
             mainAxisSize: MainAxisSize.min,
             // control the expansion to be in the given space only
             children: [
+              const SearchBar(),
               BlocBuilder<CounterCubit,int>(
                 builder: (context, state) =>
                     Text("${BlocProvider.of<CounterCubit>(context).state}"),

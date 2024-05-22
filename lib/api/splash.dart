@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:d/errors/customError.dart';
 import 'package:d/models/banner.dart';
 import 'package:d/models/product.dart';
 import 'package:http/http.dart' as http;
@@ -23,7 +24,6 @@ import 'package:http/http.dart' as http;
     final url = Uri.parse('https://gegabox.onrender.com/api/v1/product');
     try {
       var response = await http.get(url);
-      // print(jsonDecode(response.body)["products"].map((json)=>Product.fromJson(json)).toList());
       return jsonDecode(response.body)["products"]
           .map((json) => Product.fromJson(json))
           .toList();
