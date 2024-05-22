@@ -1,8 +1,10 @@
+import 'package:d/bloc/data/data.dart';
+
 import 'bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'constants/constants.dart';
-import 'screens/screens.dart';
+import 'routes/routers.dart';
 
 void main() {
   runApp(
@@ -10,6 +12,7 @@ void main() {
       providers: [
         BlocProvider<CounterCubit>(create: (context) => CounterCubit()),
         BlocProvider<AccountCubit>(create: (context) => AccountCubit()),
+        BlocProvider<DataBloc>(create: (context) => DataBloc()),
       ],
       child: const MyApp(),
     ),
@@ -21,20 +24,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: true,
-      initialRoute: "/",
       theme: theme,
-      onGenerateRoute: (settings) {
-        if (settings.name == Home.routePath) {
-          return MaterialPageRoute(
-              builder: (BuildContext context) => const Home());
-        }
-        if (settings.name == Second.routePath) {
-          return MaterialPageRoute(
-              builder: (BuildContext context) => const Second());
-        }
-      },
+      routerConfig: routers,
     );
   }
 }

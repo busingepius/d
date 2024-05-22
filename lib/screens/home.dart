@@ -1,10 +1,9 @@
 import 'package:d/bloc/count.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class Home extends StatefulWidget {
-  static const String routePath = "/";
-
   const Home({super.key});
 
   @override
@@ -26,7 +25,7 @@ class _HomeState extends State<Home> {
                     Text("${BlocProvider.of<CounterCubit>(context).state}"),
               ),
               ElevatedButton(
-                onPressed: () => Navigator.pushNamed(context, "/second"),
+                onPressed: () => context.go("/second"),
                 style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all<Color?>(Colors.red),
