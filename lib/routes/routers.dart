@@ -12,20 +12,24 @@ final GoRouter routers = GoRouter(
       },
     ),
     GoRoute(
-        path: "/home",
-        builder: (context, state) {
-          return const Home();
-        }),
+      path: "/home",
+      builder: (context, state) {
+        return const Home();
+      },
+      routes: [
+        GoRoute(
+          path: "search",
+          builder: (BuildContext context, GoRouterState state) {
+            return const SearchScreen();
+          },
+        ),
+      ],
+    ),
     GoRoute(
       path: "/second",
       builder: (BuildContext context, GoRouterState state) {
         return const Second();
       },
     ),
-    GoRoute(
-        path: "/search",
-        builder: (BuildContext context, GoRouterState state) {
-          return const SearchScreen();
-        })
   ],
 );

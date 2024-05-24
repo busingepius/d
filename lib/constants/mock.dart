@@ -18,6 +18,24 @@ const LinearGradient mainButton = LinearGradient(
   end: FractionalOffset.bottomCenter,
 );
 
+// separating comma prices
+String commaSeparatedPrice(String price) {
+  String finalPrice = "";
+  int position = 0;
+  for (int i = price.length; i > 1; i--) {
+    position++;
+    finalPrice = price.substring(
+      price.length - position,
+      (price.length - position + 1),
+    ) +
+        finalPrice;
+    if (position % 3 == 0) {
+      finalPrice = ",$finalPrice";
+    }
+  }
+  return price.substring(0,1)+finalPrice;
+}
+
 Map<String, String> navRail = {
   "Valentine's Day":
       'https://res.cloudinary.com/dj8sbqzmv/image/upload/v1674994292/valentines_h5mehj.jpg',

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  bool? focus;
+  bool focus;
 
   CustomSearchBar({
-    this.focus,
+    required this.focus,
     super.key,
   });
 
@@ -17,14 +17,14 @@ class CustomSearchBar extends StatelessWidget {
       child: SearchBar(
         elevation: MaterialStateProperty.all<double>(10.0),
         shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
-        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+        backgroundColor: MaterialStateProperty.all<Color?>(Colors.grey[100]),
         surfaceTintColor: MaterialStateProperty.all<Color>(Colors.grey),
-        overlayColor: MaterialStateProperty.all<Color>(Colors.blue),
+        // overlayColor: MaterialStateProperty.all<Color>(Colors.blue),
         textInputAction: TextInputAction.search,
         autoFocus: focus ?? false,
         hintText: "Search here for everything",
         leading: const Icon(Icons.search),
-        onTap: () => context.go("/search"),
+        onTap: () => context.go("/home/search"),
         hintStyle: MaterialStateProperty.all<TextStyle>(
           const TextStyle(
             color: Colors.grey,

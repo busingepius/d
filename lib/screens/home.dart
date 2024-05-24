@@ -1,8 +1,9 @@
+import 'package:d/bloc/data/data.dart';
 import 'package:d/widgets/customSearchBar.dart';
 import 'package:d/widgets/widget.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class Home extends StatelessWidget {
@@ -10,12 +11,12 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bannersAndProducts = GoRouterState.of(context).extra! as Map;
+    final bannersAndProducts = BlocProvider.of<DataBloc>(context).state;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
-            title: SizedBox(
+            leading: SizedBox(
               height: 30.0,
               width: 30.0,
               child: Image.asset("images/logos/logo.png"),
@@ -40,7 +41,7 @@ class Home extends StatelessWidget {
             ],
             bottom: PreferredSize(
               preferredSize: const Size(50.0, 30.0),
-              child: CustomSearchBar(),
+              child: CustomSearchBar(focus:false),
             ),
           ),
           const SliverToBoxAdapter(
