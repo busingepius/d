@@ -7,20 +7,25 @@ final GoRouter routers = GoRouter(
     GoRoute(
       path: "/",
       builder: (BuildContext context, GoRouterState state) {
+        // return const CustomScrollViewExample();
         return const SplashScreen();
       },
     ),
     GoRoute(
-      path:"/home",
-      builder: (context, state){
-        return const Home();
-      }
-    ),
+        path: "/home",
+        builder: (context, state) {
+          return const Home();
+        }),
     GoRoute(
       path: "/second",
       builder: (BuildContext context, GoRouterState state) {
         return const Second();
       },
     ),
+    GoRoute(
+        path: "/search",
+        builder: (BuildContext context, GoRouterState state) {
+          return const SearchScreen();
+        })
   ],
 );

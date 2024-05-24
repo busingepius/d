@@ -13,7 +13,7 @@ class BannerAd {
 
   static BannerAd fromJson(Map<String, dynamic> json) {
     return BannerAd(
-      id: json["id"],
+      id: json["_id"],
       detail: json["detail"],
       image: json["image"],
       createdAt: DateTime.parse(json["createdAt"]),

@@ -39,10 +39,10 @@ class Product {
 
   factory Product.fromJson(Map<String, dynamic> json) {
     return Product(
-      id: json["id"],
+      id: json["_id"],
       name: json["name"],
       description: json["description"],
-      images: json["images"],
+      images: json["image"],
       createdAt: DateTime.parse(json["createdAt"]),
       updatedAt: DateTime.parse(json["updatedAt"]),
       price: json["price"],
@@ -61,10 +61,10 @@ class Product {
 
   Map<dynamic, Object?> toJson(){
     return {
-      id:id,
+      "_id":id,
       name:name,
       description:description,
-      images:images,
+      "image":images,
       createdAt:createdAt!.toIso8601String(),
       updatedAt:updatedAt!.toIso8601String(),
       price:price,

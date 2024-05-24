@@ -1,41 +1,59 @@
-import 'package:d/bloc/count.dart';
+import 'package:d/widgets/customSearchBar.dart';
+import 'package:d/widgets/widget.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class Home extends StatefulWidget {
+class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
   Widget build(BuildContext context) {
+    final bannersAndProducts = GoRouterState.of(context).extra! as Map;
     return Scaffold(
-      body: SizedBox(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            // control the expansion to be in the given space only
-            children: [
-              const SearchBar(),
-              BlocBuilder<CounterCubit,int>(
-                builder: (context, state) =>
-                    Text("${BlocProvider.of<CounterCubit>(context).state}"),
-              ),
-              ElevatedButton(
-                onPressed: () => context.go("/second"),
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all<Color?>(Colors.red),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: SizedBox(
+              height: 30.0,
+              width: 30.0,
+              child: Image.asset("images/logos/logo.png"),
+            ),
+            pinned: true,
+            snap: false,
+            backgroundColor: Colors.white,
+            floating: false,
+            elevation: 0.0,
+            actions: [
+              const Text("Login"),
+              Container(
+                margin: const EdgeInsets.only(right: 15.0, left: 5.0),
+                child: InkWell(
+                  onTap: () => print("notifications"),
+                  child: const Badge(
+                    label: Text("12"),
+                    child: Icon(Icons.notifications),
+                  ),
                 ),
-                child: const Text("Second Screen"),
               ),
             ],
+            bottom: PreferredSize(
+              preferredSize: const Size(50.0, 30.0),
+              child: CustomSearchBar(),
+            ),
           ),
-        ),
+          const SliverToBoxAdapter(
+            child: CategoryCard(),
+          ),
+          SliverToBoxAdapter(
+            child: CustomPageView(banners: bannersAndProducts["banners"]),
+          ),
+          SliverPadding(
+            padding:const EdgeInsets.symmetric(horizontal: 5.0),
+            sliver: CustomSliverGrid(products: bannersAndProducts["products"]),
+          ),
+        ],
       ),
     );
   }

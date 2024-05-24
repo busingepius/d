@@ -56,7 +56,7 @@ class CategoryCard extends StatelessWidget {
                     child: Text(
                         category.category,
                         textAlign: TextAlign.right,
-                        style:const TextStyle(fontSize:10.0)
+                        style:const TextStyle(fontSize:10.0),
                     ),
                   )
                 ],

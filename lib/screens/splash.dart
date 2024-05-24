@@ -36,7 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 if (state.keys.first == "message") {
                   showCustomSnackBar(context:context,message:state["message"]);
                 } else {
-                  context.go("/home");
+                  context.go("/home",extra: state);
                 }
               },
               child: const Spacer(),
@@ -47,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> {
               width: 200.0,
             ),
             const Spacer(),
-            const Text("Powered by Gegabox"),
+            const Text("Setting you up..."),
           ],
         ),
       ),
