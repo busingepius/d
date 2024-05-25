@@ -23,6 +23,12 @@ final GoRouter routers = GoRouter(
             return const SearchScreen();
           },
         ),
+        GoRoute(
+          path:"login",
+          builder:(BuildContext context, GoRouterState state){
+            return Login();
+          }
+        )
       ],
     ),
     GoRoute(

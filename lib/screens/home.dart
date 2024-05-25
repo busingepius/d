@@ -1,6 +1,7 @@
 import 'package:d/bloc/data/data.dart';
 import 'package:d/widgets/customSearchBar.dart';
 import 'package:d/widgets/widget.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +28,10 @@ class Home extends StatelessWidget {
             floating: false,
             elevation: 0.0,
             actions: [
-              const Text("Login"),
+              GestureDetector(
+                onTap: ()=>context.go("/home/login"),
+                child: const Text("Login"),
+              ),
               Container(
                 margin: const EdgeInsets.only(right: 15.0, left: 5.0),
                 child: InkWell(
@@ -41,7 +45,7 @@ class Home extends StatelessWidget {
             ],
             bottom: PreferredSize(
               preferredSize: const Size(50.0, 30.0),
-              child: CustomSearchBar(focus:false),
+              child: CustomSearchBar(focus: false),
             ),
           ),
           const SliverToBoxAdapter(
@@ -51,7 +55,7 @@ class Home extends StatelessWidget {
             child: CustomPageView(banners: bannersAndProducts["banners"]),
           ),
           SliverPadding(
-            padding:const EdgeInsets.symmetric(horizontal: 5.0),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
             sliver: CustomSliverGrid(products: bannersAndProducts["products"]),
           ),
         ],

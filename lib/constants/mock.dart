@@ -36,6 +36,33 @@ String commaSeparatedPrice(String price) {
   return price.substring(0,1)+finalPrice;
 }
 
+String commaSeparatedPriceBuffer(String price) {
+  StringBuffer buffer = new StringBuffer(price);
+  int length = buffer.length;
+  int indexPosition = length - 4;
+
+  while(indexPosition>-1){
+    length = buffer.length;
+    String bufferString = buffer.toString();
+
+    indexPosition = indexPosition-3 ;
+
+    String valueToInsert = ", ";
+    String part1 = bufferString.substring(0, indexPosition);  // "Hello "
+    String part2 = bufferString.substring(indexPosition);
+    String result = part1 + valueToInsert + part2;
+
+    buffer.clear();
+    buffer.write(result);
+    buffer.write("!");
+
+
+  }
+  return buffer.toString();
+}
+
+
+
 Map<String, String> navRail = {
   "Valentine's Day":
       'https://res.cloudinary.com/dj8sbqzmv/image/upload/v1674994292/valentines_h5mehj.jpg',
