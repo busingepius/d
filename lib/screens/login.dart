@@ -26,9 +26,12 @@ class _LoginState extends State<Login> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
-                      height: 200.0,
-                      child: Image.asset("images/logos/logo.png"),
+                    GestureDetector(
+                      onTap:()=> context.go("/home"),
+                      child: SizedBox(
+                        height: 200.0,
+                        child: Image.asset("images/logos/logo.png"),
+                      ),
                     ),
                     SizedBox(
                       height: 45.0,

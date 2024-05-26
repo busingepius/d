@@ -6,3 +6,5 @@ export "splash.dart";
 export "login.dart";
 export "register.dart";
 export "reset.dart";
+export "verify.dart";
+export "forgot.dart";

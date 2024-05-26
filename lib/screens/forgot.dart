@@ -2,8 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Reset extends StatelessWidget {
-  bool isValue = false;
+class Forgot extends StatelessWidget {
+  Forgot({super.key});
+
+
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -26,55 +28,59 @@ class Reset extends StatelessWidget {
                         child: Image.asset("images/logos/logo.png"),
                       ),
                     ),
+                    const SizedBox(height: 8.0),
                     SizedBox(
                       height: 45.0,
                       child: TextFormField(
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: false,
                         validator: (value) {
                           print(value);
                         },
                         textAlignVertical: TextAlignVertical.center,
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.email_outlined),
-                          label: Text("Email"),
-                          hintText: "Email address",
+                          prefixIcon: Icon(Icons.password),
+                          label: Text("New Password"),
+                          hintText: "New Password",
                           border: OutlineInputBorder(gapPadding: 1.0),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 8.0),
+                    const SizedBox(height:8.0),
+                    SizedBox(
+                      height: 45.0,
+                      child: TextFormField(
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: false,
+                        validator: (value) {
+                          print(value);
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.password),
+                          label: Text("Confirm Password"),
+                          hintText: "Confirm Password",
+                          border: OutlineInputBorder(gapPadding: 1.0),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 1.0),
                     ElevatedButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
-                          print("presses");
+                          print("reset");
                         }
                         FocusScope.of(context).unfocus();
                       },
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.black),
+                        MaterialStateProperty.all<Color>(Colors.black),
                         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
                             const EdgeInsets.symmetric(horizontal: 50.0)),
                       ),
                       child: const Text(
-                        "Send Link",
+                        "Reset Password",
                         style: TextStyle(color: Colors.white),
-                      ),
-                    ),
-                    const SizedBox(height: 10.0),
-                    RichText(
-                      text: TextSpan(
-                        text: "I remember my the password. Please ",
-                        style: const TextStyle(color: Colors.black),
-                        children: [
-                          TextSpan(
-                            text: "sign in",
-                            style: const TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                context.go("/home/login");
-                              },
-                          ),
-                        ],
                       ),
                     ),
                   ],
