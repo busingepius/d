@@ -35,15 +35,15 @@ final GoRouter routers = GoRouter(
                 return Register();
               },
             ),
+            GoRoute(
+              path: "reset",
+              builder: (BuildContext context, GoRouterState state) {
+                return Reset();
+              },
+            ),
           ],
         ),
       ],
-    ),
-    GoRoute(
-      path: "/second",
-      builder: (BuildContext context, GoRouterState state) {
-        return const Second();
-      },
     ),
   ],
 );

@@ -5,3 +5,4 @@ export "customScroll.dart";
 export "splash.dart";
 export "login.dart";
 export "register.dart";
+export "reset.dart";

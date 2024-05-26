@@ -55,7 +55,7 @@ class _RegisterState extends State<Register> {
                         },
                         textAlignVertical: TextAlignVertical.center,
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.email_outlined),
+                          prefixIcon: Icon(Icons.person_outline),
                           label: Text("Name"),
                           hintText: "Name",
                           border: OutlineInputBorder(gapPadding: 1.0),
@@ -71,7 +71,7 @@ class _RegisterState extends State<Register> {
                         },
                         textAlignVertical: TextAlignVertical.center,
                         decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.email_outlined),
+                          prefixIcon: Icon(Icons.local_phone_outlined),
                           label: Text("Phone Number"),
                           hintText: "Phone number address",
                           border: OutlineInputBorder(gapPadding: 1.0),

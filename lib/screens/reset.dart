@@ -2,14 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class Login extends StatefulWidget {
-  Login({super.key});
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class Reset extends StatelessWidget {
   bool isValue = false;
   final formKey = GlobalKey<FormState>();
 
@@ -46,43 +39,6 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                     const SizedBox(height: 8.0),
-                    SizedBox(
-                      height: 45.0,
-                      child: TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        obscureText: isValue,
-                        validator: (value) {
-                          print(value);
-                        },
-                        textAlignVertical: TextAlignVertical.center,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Icons.password),
-                          label: Text("Password"),
-                          hintText: "Password",
-                          border: OutlineInputBorder(gapPadding: 1.0),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 1.0),
-                    SizedBox(
-                      width: double.infinity,
-                      child: Row(
-                        mainAxisSize:MainAxisSize.min,
-                        mainAxisAlignment:MainAxisAlignment.start,
-                        children: [
-                          Checkbox(
-                            value: isValue,
-                            onChanged: (value) {
-                              setState(() {
-                                isValue = value!;
-                              });
-                              print(isValue);
-                            },
-                          ),
-                          const Text("show password"),
-                        ],
-                      ),
-                    ),
                     ElevatedButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
@@ -97,39 +53,22 @@ class _LoginState extends State<Login> {
                             const EdgeInsets.symmetric(horizontal: 50.0)),
                       ),
                       child: const Text(
-                        "Login",
+                        "Send Link",
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     const SizedBox(height: 10.0),
                     RichText(
                       text: TextSpan(
-                        text: "Create an account. Please ",
-                        style: TextStyle(color: Colors.black),
-                        children: [
-                          TextSpan(
-                            text: "register here",
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                context.go("/home/login/register");
-                              },
-                            style: const TextStyle(color: Colors.blue),
-                          ),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 10.0),
-                    RichText(
-                      text: TextSpan(
-                        text: "If you forgot the password. Please ",
+                        text: "I remember my the password. Please ",
                         style: const TextStyle(color: Colors.black),
                         children: [
                           TextSpan(
-                            text: "reset here",
+                            text: "sign in",
                             style: const TextStyle(color: Colors.blue),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                context.go("/home/login/reset");
+                                context.go("/home/login");
                               },
                           ),
                         ],
