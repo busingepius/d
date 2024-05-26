@@ -13,6 +13,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bannersAndProducts = BlocProvider.of<DataBloc>(context).state;
+    FocusScope.of(context).hasFocus?FocusScope.of(context).unfocus():null;
     return Scaffold(
       body: CustomScrollView(
         slivers: [

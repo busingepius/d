@@ -24,11 +24,19 @@ final GoRouter routers = GoRouter(
           },
         ),
         GoRoute(
-          path:"login",
-          builder:(BuildContext context, GoRouterState state){
+          path: "login",
+          builder: (BuildContext context, GoRouterState state) {
             return Login();
-          }
-        )
+          },
+          routes: [
+            GoRoute(
+              path: "register",
+              builder: (BuildContext context, GoRouterState state) {
+                return Register();
+              },
+            ),
+          ],
+        ),
       ],
     ),
     GoRoute(

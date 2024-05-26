@@ -1,9 +1,16 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   Login({super.key});
 
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  bool isValue = false;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -42,6 +49,8 @@ class Login extends StatelessWidget {
                     SizedBox(
                       height: 45.0,
                       child: TextFormField(
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: isValue,
                         validator: (value) {
                           print(value);
                         },
@@ -54,13 +63,32 @@ class Login extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 10.0),
+                    const SizedBox(height: 1.0),
+                    SizedBox(
+                      width: double.infinity,
+                      child: Row(
+                        mainAxisSize:MainAxisSize.min,
+                        mainAxisAlignment:MainAxisAlignment.start,
+                        children: [
+                          Checkbox(
+                            value: isValue,
+                            onChanged: (value) {
+                              setState(() {
+                                isValue = value!;
+                              });
+                              print(isValue);
+                            },
+                          ),
+                          const Text("show password"),
+                        ],
+                      ),
+                    ),
                     ElevatedButton(
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           print("presses");
-
                         }
+                        FocusScope.of(context).unfocus();
                       },
                       style: ButtonStyle(
                         backgroundColor:
@@ -83,25 +111,26 @@ class Login extends StatelessWidget {
                             text: "register here",
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
-                                print("register here");
+                                context.go("/home/login/register");
                               },
-                            style:const TextStyle(color: Colors.blue),
+                            style: const TextStyle(color: Colors.blue),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(height: 10.0),
                     RichText(
-                      text:  TextSpan(
+                      text: TextSpan(
                         text: "If you forgot the password. Please ",
                         style: const TextStyle(color: Colors.black),
                         children: [
                           TextSpan(
                             text: "reset here",
-                            style:const TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()..onTap = (){
-                              print("reset here");
-                            },
+                            style: const TextStyle(color: Colors.blue),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                print("reset here");
+                              },
                           ),
                         ],
                       ),
