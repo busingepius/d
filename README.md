@@ -29,7 +29,7 @@ keytool -genkey -v -keystore <path-to-put-file/file_name.jks> -keyalg RSA -keysi
 2048 -validity 10000 -alias preferred_name
 ```
 
-To get SHA256:
+To get  details:
 ```
 ./keytool -list -v -keystore "C:\Users\USER\IdeaProjects\D\reciped.jks"
 ```
