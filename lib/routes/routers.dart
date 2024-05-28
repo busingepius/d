@@ -12,6 +12,12 @@ final GoRouter routers = GoRouter(
       },
     ),
     GoRoute(
+      path: "/verify",
+      builder: (BuildContext context, GoRouterState state) {
+        return Verify();
+      },
+    ),
+    GoRoute(
       path: "/home",
       builder: (context, state) {
         return const Home();
@@ -42,12 +48,6 @@ final GoRouter routers = GoRouter(
               },
             ),
           ],
-        ),
-        GoRoute(
-          path: "verify",
-          builder: (BuildContext context, GoRouterState state) {
-            return Verify();
-          },
         ),
         GoRoute(
           path: "forgot",
