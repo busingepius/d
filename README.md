@@ -21,6 +21,10 @@
 #### To sign certificate
 - Go to the Java bin directory and run the following codes
 ```
+C:\Program Files\Java\jdk-21\bin
+```
+
+```
 keytool -genkey -v -keystore <path-to-put-file/file_name.jks> -keyalg RSA -keysize
 2048 -validity 10000 -alias preferred_name
 ```
