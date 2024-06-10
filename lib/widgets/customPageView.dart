@@ -47,6 +47,7 @@ class _CustomPageViewState extends State<CustomPageView> {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 150.0,
+      width: double.infinity,
       child: PageView.builder(
         controller: pageController,
         itemCount: widget.banners.length,

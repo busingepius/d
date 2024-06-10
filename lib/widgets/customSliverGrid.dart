@@ -23,7 +23,7 @@ class CustomSliverGrid extends StatelessWidget {
           Product product = products[index];
           String price = commaSeparatedPrice("${product.price}");
           return GestureDetector(
-            onTap:()=>print(product.id),
+            onTap:()=>print("product.id"),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5.0)),
@@ -177,11 +177,12 @@ class CustomSliverGrid extends StatelessWidget {
         findChildIndexCallback: (Key key) {
           final valueKey = key as ValueKey;
           final index =
-              products.indexWhere((product) => product == valueKey.value);
+               products.indexWhere((product) => product == valueKey.value);
           if (index == -1) return null;
           return index;
         },
-        childCount: products.length, // automatic count increment
+        childCount: 8, // automatic count increment
+        // childCount: products.length, // automatic count increment
       ),
     );
   }

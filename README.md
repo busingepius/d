@@ -12,7 +12,7 @@
       <package name>
     ```
     that is 
-```js 
+```
  ./adb shell 'am start -a android.intent.action.VIEW \
     -c android.intent.category.BROWSABLE \
     -d "https://gegabox.ug/home"' \ com.gegabox.gegabox
@@ -23,7 +23,7 @@
 ```
 C:\Program Files\Java\jdk-21\bin
 ```
-
+- Run the code below
 ```
 keytool -genkey -v -keystore <path-to-put-file/file_name.jks> -keyalg RSA -keysize
 2048 -validity 10000 -alias preferred_name

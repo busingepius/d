@@ -24,7 +24,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Future.delayed(const Duration(seconds:10),()=>context.go("/home"));
     return Scaffold(
       body: Center(
         child: Column(

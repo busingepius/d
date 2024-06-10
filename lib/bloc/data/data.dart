@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:d/api/splash.dart';
 import 'package:d/bloc/data/event.dart';

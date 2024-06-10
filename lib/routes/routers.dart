@@ -1,5 +1,8 @@
+import 'package:bloc/bloc.dart';
+import 'package:d/bloc/data/data.dart';
 import 'package:d/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter routers = GoRouter(
@@ -16,11 +19,23 @@ final GoRouter routers = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return Verify();
       },
+      redirect: (BuildContext context, GoRouterState state) {
+        if (BlocProvider.of<DataBloc>(context).state == {}) {
+          return "/";
+        }
+        return null;
+      },
     ),
     GoRoute(
       path: "/home",
-      builder: (context, state) {
+      builder: (BuildContext context, GoRouterState state) {
         return const Home();
+      },
+      redirect: (BuildContext context, GoRouterState state) {
+        if (BlocProvider.of<DataBloc>(context).state == {}) {
+          return "/";
+        }
+        return null;
       },
       routes: [
         GoRoute(
