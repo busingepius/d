@@ -10,7 +10,6 @@ final GoRouter routers = GoRouter(
     GoRoute(
       path: "/",
       builder: (BuildContext context, GoRouterState state) {
-        // return const CustomScrollViewExample();
         return const SplashScreen();
       },
     ),
@@ -19,23 +18,17 @@ final GoRouter routers = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return Verify();
       },
-      redirect: (BuildContext context, GoRouterState state) {
-        if (BlocProvider.of<DataBloc>(context).state == {}) {
-          return "/";
-        }
-        return null;
-      },
     ),
     GoRoute(
       path: "/home",
-      builder: (BuildContext context, GoRouterState state) {
-        return const Home();
-      },
       redirect: (BuildContext context, GoRouterState state) {
         if (BlocProvider.of<DataBloc>(context).state == {}) {
           return "/";
         }
         return null;
+      },
+      builder: (BuildContext context, GoRouterState state) {
+        return const Home();
       },
       routes: [
         GoRoute(

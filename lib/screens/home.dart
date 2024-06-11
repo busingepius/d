@@ -1,4 +1,5 @@
 import 'package:d/bloc/data/data.dart';
+import 'package:d/bloc/data/event.dart';
 import 'package:d/widgets/customSearchBar.dart';
 import 'package:d/widgets/widget.dart';
 
@@ -11,55 +12,63 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bannersAndProducts = BlocProvider.of<DataBloc>(context).state;// not good with deeplinks
-
-    FocusScope.of(context).hasFocus?FocusScope.of(context).unfocus():null;
+    BlocProvider.of<DataBloc>(context).add(const SplashEvent());
+    FocusScope.of(context).hasFocus ? FocusScope.of(context).unfocus() : null;
     return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SliverAppBar(
-            leading: SizedBox(
-              height: 30.0,
-              width: 30.0,
-              child: Image.asset("images/logos/logo.png"),
-            ),
-            pinned: true,
-            snap: false,
-            backgroundColor: Colors.white,
-            floating: false,
-            elevation: 0.0,
-            actions: [
-              GestureDetector(
-                onTap: ()=>context.go("/home/login"),
-                child: const Text("Login"),
-              ),
-              Container(
-                margin: const EdgeInsets.only(right: 15.0, left: 5.0),
-                child: InkWell(
-                  onTap: () => print("notifications"),
-                  child: const Badge(
-                    label: Text("12"),
-                    child: Icon(Icons.notifications),
-                  ),
-                ),
-              ),
-            ],
-            bottom: PreferredSize(
-              preferredSize: const Size(50.0, 30.0),
-              child: CustomSearchBar(focus: false),
-            ),
-          ),
-          const SliverToBoxAdapter(
-            child: CategoryCard(),
-          ),
-          SliverToBoxAdapter(
-            child: CustomPageView(banners: bannersAndProducts["banners"]),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 5.0),
-            sliver: CustomSliverGrid(products: bannersAndProducts["products"]),
-          ),
-        ],
+      body: BlocBuilder<DataBloc, Map>(
+        builder: (BuildContext context, Map<dynamic, dynamic> state) {
+          Map<dynamic, dynamic> bannersAndProducts = state;
+          return bannersAndProducts.isEmpty
+              ? const Center(child: Text("fghj"))
+              : CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      leading: SizedBox(
+                        height: 30.0,
+                        width: 30.0,
+                        child: Image.asset("images/logos/logo.png"),
+                      ),
+                      pinned: true,
+                      snap: false,
+                      backgroundColor: Colors.white,
+                      floating: false,
+                      elevation: 0.0,
+                      actions: [
+                        GestureDetector(
+                          onTap: () => context.go("/home/login"),
+                          child: const Text("Login"),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(right: 15.0, left: 5.0),
+                          child: InkWell(
+                            onTap: () => print("notifications"),
+                            child: const Badge(
+                              label: Text("12"),
+                              child: Icon(Icons.notifications),
+                            ),
+                          ),
+                        ),
+                      ],
+                      bottom: PreferredSize(
+                        preferredSize: const Size(50.0, 30.0),
+                        child: CustomSearchBar(focus: false),
+                      ),
+                    ),
+                    const SliverToBoxAdapter(
+                      child: CategoryCard(),
+                    ),
+                    SliverToBoxAdapter(
+                      child: CustomPageView(
+                          banners: bannersAndProducts["banners"]!),
+                    ),
+                    SliverPadding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      sliver: CustomSliverGrid(
+                          products: bannersAndProducts["products"]!),
+                    ),
+                  ],
+                );
+        },
       ),
     );
   }

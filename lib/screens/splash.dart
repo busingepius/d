@@ -6,24 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  late Map<String, List<dynamic>> productsAndbanners;
-
-  @override
-  void initState() {
-    BlocProvider.of<DataBloc>(context).add(const SplashEvent());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    BlocProvider.of<DataBloc>(context).add(const SplashEvent());
     return Scaffold(
       body: Center(
         child: Column(
@@ -35,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 if (state.keys.first == "message") {
                   showCustomSnackBar(context:context,message:state["message"]);
                 } else {
-                  context.go("/home"/*,extra: state*/);
+                  context.go("/home");
                 }
               },
               child: const Spacer(),
