@@ -1,5 +1,6 @@
 import 'package:d/bloc/data/data.dart';
 import 'package:d/bloc/data/event.dart';
+import 'package:d/screens/screens.dart';
 import 'package:d/widgets/customSearchBar.dart';
 import 'package:d/widgets/widget.dart';
 
@@ -18,8 +19,8 @@ class Home extends StatelessWidget {
       body: BlocBuilder<DataBloc, Map>(
         builder: (BuildContext context, Map<dynamic, dynamic> state) {
           Map<dynamic, dynamic> bannersAndProducts = state;
-          return bannersAndProducts.isEmpty
-              ? const Center(child: Text("fghj"))
+          return bannersAndProducts.length < 2
+              ? const SplashScreen()
               : CustomScrollView(
                   slivers: [
                     SliverAppBar(

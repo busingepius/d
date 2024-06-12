@@ -1,6 +1,7 @@
 import 'package:d/constants/constants.dart';
 import 'package:d/models/product.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomSliverGrid extends StatelessWidget {
   List<dynamic> products;
@@ -23,7 +24,7 @@ class CustomSliverGrid extends StatelessWidget {
           Product product = products[index];
           String price = commaSeparatedPrice("${product.price}");
           return GestureDetector(
-            onTap:()=>print("product.id"),
+            onTap:()=>context.go("/home/product/${product.id}",extra:product),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5.0)),
@@ -94,7 +95,7 @@ class CustomSliverGrid extends StatelessWidget {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Text(
-                                    "${product.numOfReviews == 0 ? 4.5 : product.numOfReviews}",
+                                    "${product.averageRating}",
                                     style: const TextStyle(
                                       color: Colors.green,
                                     ),

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:d/bloc/data/data.dart';
+import 'package:d/models/product.dart';
 import 'package:d/screens/screens.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,6 +36,15 @@ final GoRouter routers = GoRouter(
           path: "search",
           builder: (BuildContext context, GoRouterState state) {
             return const SearchScreen();
+          },
+        ),
+        GoRoute(
+          path: "product/:id",
+          builder: (BuildContext context, GoRouterState state) {
+            return ProductScreen(
+              id: state.pathParameters["id"]!,
+              product: state.extra! as Product,
+            );
           },
         ),
         GoRoute(
